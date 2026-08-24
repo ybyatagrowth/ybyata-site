@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ybyatã — Operações, performance e crescimento para clínicas</title>
-  <meta name="description" content="A Ybyatã constrói operações, performance e crescimento para clínicas de saúde. Aquisição com atribuição de verdade, inteligência de operações e resultado medido no dinheiro — crescimento sólido, que fica.">
+  <meta name="description" content="A Ybyatã constrói operações, performance e crescimento para clínicas de saúde. Aquisição com atribuição de verdade, inteligência de operações e resultado medido no dinheiro. Crescimento sólido, que fica.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,600;0,700;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,10 +27,9 @@
     }
     .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
     header { padding: 28px 0; border-bottom: 1px solid rgba(38,32,25,.12); }
-    .marca { display: flex; align-items: center; gap: 12px; color: var(--ouro); }
-    .marca svg { height: 34px; width: auto; }
+    .marca { display: flex; align-items: center; }
     .marca span {
-      font-family: "Cormorant", serif; font-weight: 600; font-size: 15px;
+      font-family: "Cormorant", serif; font-weight: 600; font-size: 17px;
       letter-spacing: .34em; color: var(--tinta); transform: translateY(1px);
     }
     .hero { padding: 96px 0 72px; }
@@ -48,7 +47,7 @@
     h2 { font-family: "Cormorant", serif; font-weight: 700; font-size: 2rem; margin-bottom: 28px; }
     .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
     .pilar h3 { font-family: "Cormorant", serif; font-weight: 700; font-size: 1.35rem; margin-bottom: 8px; }
-    .pilar h3::before { content: "— "; color: var(--ouro); }
+    .pilar h3::before { content: ""; display: block; width: 28px; height: 2px; background: var(--ouro); margin-bottom: 10px; }
     .pilar p { color: rgba(38,32,25,.8); font-size: .98rem; }
     .pacto p { max-width: 62ch; margin-bottom: 16px; }
     .pacto .assinatura { font-family: "Cormorant", serif; font-style: italic; font-size: 1.3rem; color: var(--carmim); }
@@ -69,18 +68,6 @@
 <body>
   <header>
     <div class="wrap marca">
-      <svg viewBox="401 290 226 297" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="--emblema-fundo:#F5F2E7">
-        <path fill="currentColor" d="M564.386 322.419C559.683 318.551 555.692 313.285 559.489 307.178C560.983 304.816 563.357 303.147 566.085 302.541C568.653 301.952 571.35 302.431 573.557 303.869C578.464 307.124 579.836 314.183 576.13 318.807C573.43 322.175 571.469 322.366 567.523 323.039L567.205 351.355C573.113 351.392 579.122 351.502 585.02 351.298C586.608 348.085 588.097 344.973 591.525 343.534C605.188 337.801 612.061 358.637 598.573 363.07C596.295 363.836 593.805 363.657 591.662 362.57C588.116 360.746 586.899 357.994 585.681 354.485L565.221 354.598C558.733 359.862 546.571 372.595 540.223 379.008C532.851 386.457 520.25 398.279 514.048 405.886C514.344 434.78 513.342 466.141 514.363 494.632C527.081 505.409 542.273 521.829 554.688 531.189C562.869 531.62 572.557 531.407 580.856 531.398L598.5 550.964C611.494 548.735 613.96 563.606 605.229 567.084C602.917 567.992 600.334 567.917 598.078 566.876C591.874 563.966 592.954 557.602 595.672 552.604C590.213 546.716 584.805 540.464 579.354 534.489L553.104 534.444C539.655 522.921 527.594 510.736 514.498 499.16C514.206 506.23 514.313 513.561 514.329 520.66C526.383 531.834 538.108 544.573 550.587 555.072C549.984 554.565 570.412 549.32 565.356 567.71C565.018 568.155 564.67 568.593 564.313 569.022C560.116 574.005 554.396 573.586 550.004 569.876C546.545 566.954 548.557 558.833 547.968 558.238C536.842 547.006 525.558 535.601 514.031 524.781C514.162 533.826 513.788 543.011 514.039 552.051C513.715 558.863 517.131 557.243 519.975 560.38C524.402 565.338 519.913 575.07 512.9 573.65C502.793 571.604 501.742 563.088 510.03 557.395L510.617 556.999C510.733 546.235 510.735 535.471 510.625 524.707C499.672 534.939 485.843 547.119 475.496 557.416C478.802 565.085 475.7 573.572 466.342 572.273C463.571 571.87 461.077 570.373 459.418 568.118C455.882 563.337 457.957 557.977 462.697 554.847C465.784 552.807 469.873 553.927 473.18 554.877C483.61 546.543 500.714 529.577 510.885 519.946L510.877 499.636C498.664 510.26 484.95 524.273 473.119 533.648C464.674 533.861 456.228 533.999 447.781 534.063C441.326 540.386 434.562 546.359 428.249 552.587C429.041 554.038 429.75 555.338 430.185 556.919C433.532 569.077 415.34 572.024 413.972 560.043C413.652 557.24 415.045 554.449 417.014 552.548C418.93 550.697 422.486 550.95 424.961 550.55C430.972 546.047 441.696 535.408 446.333 530.413C454.448 530.84 463.841 530.59 472.062 530.548L510.769 494.472C511.516 465.838 510.891 434.77 510.972 405.903C495.294 389.279 475.034 370.602 458.517 354.609C451.913 354.556 445.309 354.571 438.705 354.652C436.564 360.05 432.973 365.099 426.386 363.493C423.402 362.746 420.883 360.754 419.468 358.023C412.642 345.108 432.77 333.965 438.656 351.463L456.926 351.477C456.82 341.848 456.679 332.615 455.974 323.008C442.216 318.659 442.842 304.411 455.654 302.138C455.952 302.17 456.25 302.207 456.547 302.251C468.091 303.924 469.459 315.581 459.62 322.197C460.251 331.617 460.134 342.426 460.446 352.076C463.869 354.695 472.639 363.638 476.253 367.138C488.284 379.02 500.419 390.798 512.656 402.468C523.915 389.576 538.345 376.903 550.347 364.439C554.609 360.013 560.175 355.151 564.046 350.513C564.264 341.15 564.377 331.785 564.386 322.419Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M425.545 346.727C429.078 345.251 433.137 346.932 434.591 350.474C436.045 354.016 434.338 358.065 430.788 359.497C427.268 360.917 423.262 359.228 421.821 355.717C420.379 352.206 422.043 348.19 425.545 346.727Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M453.51 305.913C457.059 304.502 461.078 306.253 462.461 309.813C463.844 313.373 462.061 317.378 458.49 318.733C454.959 320.073 451.008 318.315 449.64 314.794C448.273 311.274 450 307.309 453.51 305.913Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M593.99 346.311C597.578 345.31 601.302 347.391 602.33 350.972C603.357 354.552 601.305 358.292 597.732 359.347C594.121 360.413 590.333 358.333 589.294 354.714C588.255 351.095 590.363 347.323 593.99 346.311Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M566.654 305.816C570.196 304.986 573.76 307.107 574.719 310.616C575.678 314.126 573.689 317.764 570.217 318.851C567.855 319.591 565.279 318.981 563.499 317.261C561.719 315.542 561.021 312.988 561.679 310.602C562.336 308.216 564.245 306.381 566.654 305.816Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M467.051 556.718C470.48 556.551 473.402 559.182 473.594 562.61C473.785 566.038 471.175 568.978 467.749 569.194C464.288 569.412 461.311 566.77 461.117 563.307C460.924 559.845 463.587 556.887 467.051 556.718Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M555.009 557.196C558.204 556.169 561.626 557.926 562.653 561.121C563.68 564.315 561.923 567.737 558.729 568.765C555.534 569.793 552.111 568.036 551.084 564.841C550.056 561.646 551.814 558.223 555.009 557.196Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M600.189 554.381C602.899 553.661 605.693 555.218 606.504 557.902C607.316 560.586 605.854 563.43 603.2 564.333C601.4 564.945 599.41 564.526 598.01 563.242C596.609 561.957 596.02 560.011 596.474 558.166C596.928 556.32 598.353 554.869 600.189 554.381Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M420.584 554.437C423.201 553.542 426.058 554.88 427.046 557.463C428.034 560.047 426.8 562.95 424.253 564.03C422.522 564.765 420.529 564.495 419.055 563.328C417.581 562.16 416.863 560.281 417.181 558.429C417.5 556.576 418.805 555.045 420.584 554.437Z"/>
-        <path fill="var(--emblema-fundo, transparent)" d="M511.175 560.717C512.874 560.013 514.822 560.288 516.261 561.435C517.699 562.581 518.401 564.419 518.093 566.233C517.785 568.047 516.516 569.55 514.78 570.158C512.197 571.062 509.363 569.747 508.387 567.19C507.411 564.634 508.646 561.765 511.175 560.717Z"/>
-      </svg>
       <span>YBYATÃ</span>
     </div>
   </header>
@@ -105,7 +92,7 @@
             <p>
               Cada paciente que chega por um anúncio, acompanhado do primeiro
               clique até a recepção. O investimento aprende com o que acontece
-              de verdade na clínica — não com estimativas.
+              de verdade na clínica, não com estimativas.
             </p>
           </div>
           <div class="pilar">
@@ -113,14 +100,14 @@
             <p>
               O atendimento da clínica, escutado com respeito e transformado em
               sinal: agendamentos, objeções, o que precisa de olho hoje. Sem
-              planilha, sem achismo — e com privacidade levada a sério.
+              planilha, sem achismo. E com privacidade levada a sério.
             </p>
           </div>
           <div class="pilar">
             <h3>Performance que se prova</h3>
             <p>
               Resultado medido na verdade do dinheiro, não em cliques. O custo
-              de cada agendamento, o retorno de cada campanha — legível em um
+              de cada agendamento, o retorno de cada campanha, tudo legível em um
               minuto, todos os dias.
             </p>
           </div>
@@ -134,13 +121,13 @@
         <p>
           A Ybyatã não é só uma empresa de tecnologia. É um pacto: construímos
           com código, mas servimos pessoas. Entramos no real, aprendemos os
-          nomes — não só as necessidades — e carregamos o peso junto.
+          nomes, não só as necessidades, e carregamos o peso junto.
         </p>
         <p>
           Como um jequitibá: raízes de tecnologia, copa de gente, um tronco só.
           Solo firme, para esta geração e as próximas.
         </p>
-        <p class="assinatura">Não pelo agora. Pelo depois do depois.</p>
+        <p class="assinatura">Resultado agora. Raízes para durar.</p>
       </div>
     </section>
 
@@ -153,7 +140,7 @@
           <dt>CNPJ</dt>
           <dd>68.452.751/0001-82</dd>
           <dt>Endereço</dt>
-          <dd>R. Pais Leme, 215 — Conj. 1713, Pinheiros, São Paulo/SP · CEP 05424-150</dd>
+          <dd>R. Pais Leme, 215, Conj. 1713, Pinheiros, São Paulo/SP · CEP 05424-150</dd>
           <dt>Telefone</dt>
           <dd>+55 (11) 96799-1896</dd>
           <dt>Contato</dt>
