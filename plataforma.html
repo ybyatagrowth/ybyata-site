@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A plataforma · Ybyatã</title>
+  <meta name="description" content="A plataforma Ybyatã acompanha cada paciente do clique no anúncio ao atendimento na clínica, e devolve ao Google Ads e à Meta a verdade do que aconteceu. Como funciona, o que é medido, quem vê o quê.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,600;0,700;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --osso: #F5F2E7;
+      --tinta: #262019;
+      --carmim: #A11E30;
+      --musgo: #5F6E44;
+      --ouro: #96741F;
+      --claro: #FBF8EF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--osso);
+      color: var(--tinta);
+      font-family: "Alegreya Sans", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    a { color: var(--carmim); }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 28px 0; border-bottom: 1px solid rgba(38,32,25,.12); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .marca { display: flex; align-items: center; text-decoration: none; }
+    .marca span {
+      font-family: "Cormorant", serif; font-weight: 600; font-size: 17px;
+      letter-spacing: .34em; color: var(--tinta); transform: translateY(1px);
+    }
+    nav { display: flex; gap: 22px; font-size: .9rem; }
+    nav a { color: rgba(38,32,25,.75); text-decoration: none; }
+    nav a[aria-current] { color: var(--tinta); font-weight: 700; }
+    nav a:hover { color: var(--carmim); }
+    .hero { padding: 80px 0 56px; }
+    .hero h1 {
+      font-family: "Cormorant", serif; font-weight: 700;
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.08; max-width: 20ch;
+    }
+    .hero h1 em { font-style: italic; color: var(--carmim); }
+    .hero p.mote { margin-top: 22px; font-size: 1.2rem; color: rgba(38,32,25,.75); max-width: 52ch; }
+    section { padding: 56px 0; border-top: 1px solid rgba(38,32,25,.12); }
+    h2 { font-family: "Cormorant", serif; font-weight: 700; font-size: 2rem; margin-bottom: 24px; }
+    h3 { font-family: "Cormorant", serif; font-weight: 700; font-size: 1.35rem; margin-bottom: 8px; }
+    p { max-width: 66ch; }
+    .prosa p { margin-bottom: 16px; color: rgba(38,32,25,.85); }
+    ol.passos { list-style: none; counter-reset: passo; display: grid; gap: 28px; }
+    ol.passos li { counter-increment: passo; display: grid; grid-template-columns: 56px 1fr; gap: 18px; }
+    ol.passos li::before {
+      content: counter(passo); font-family: "Cormorant", serif; font-weight: 700; font-size: 2.2rem;
+      line-height: 1; color: var(--ouro);
+    }
+    ol.passos p { color: rgba(38,32,25,.85); font-size: .98rem; }
+    .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .pilar h3::before { content: ""; display: block; width: 28px; height: 2px; background: var(--ouro); margin-bottom: 10px; }
+    .pilar p { color: rgba(38,32,25,.8); font-size: .98rem; }
+    .pilar ul { padding-left: 18px; color: rgba(38,32,25,.8); font-size: .98rem; }
+    .pilar li { margin-bottom: 6px; }
+    .nota {
+      background: var(--claro); border: 1px solid rgba(38,32,25,.12); border-radius: 14px;
+      padding: 24px 28px; font-size: .95rem; max-width: 66ch;
+    }
+    .nota strong { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(38,32,25,.55); display: block; margin-bottom: 6px; }
+    table { border-collapse: collapse; width: 100%; max-width: 720px; font-size: .95rem; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(38,32,25,.12); vertical-align: top; }
+    th { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(38,32,25,.55); font-weight: 700; }
+    .tabela { overflow-x: auto; }
+    footer { padding: 36px 0 48px; border-top: 1px solid rgba(38,32,25,.12); font-size: .85rem; color: rgba(38,32,25,.6); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+    footer a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="marca" href="./"><span>YBYATÃ</span></a>
+      <nav>
+        <a href="plataforma.html" aria-current="page">A plataforma</a>
+        <a href="google-ads-api.html" lang="en">Google Ads API</a>
+        <a href="politica-de-privacidade.html">Privacidade</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <h1>Do clique no anúncio à cadeira da clínica. <em>Com a verdade voltando.</em></h1>
+      <p class="mote">
+        A Ybyatã é uma agência e uma empresa de software para clínicas de
+        fisioterapia e saúde. Operamos os anúncios das clínicas no Google Ads e
+        na Meta, e a nossa plataforma acompanha cada paciente que eles trazem:
+        do clique, pela conversa no WhatsApp da recepção, até a avaliação
+        agendada e realizada. O que acontece na clínica volta para o anúncio
+        como conversão. É assim que o investimento aprende com a realidade.
+      </p>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <h2>Como funciona</h2>
+        <ol class="passos">
+          <li>
+            <div>
+              <h3>O anúncio traz o paciente</h3>
+              <p>
+                Campanhas no Google Ads e na Meta levam à página da clínica. A
+                página guarda o identificador do clique (o GCLID do Google, o
+                identificador de clique da Meta) junto com o contato que a pessoa
+                deixa. Cada lead nasce sabendo de onde veio.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>A conversa acontece no WhatsApp da clínica</h3>
+              <p>
+                A recepção atende como sempre atendeu, pelo WhatsApp Business. A
+                plataforma acompanha a conversa pela WhatsApp Business Platform
+                (Meta) e a transforma em sinais: avaliação agendada, paciente que
+                compareceu, objeção de preço, dúvida sobre convênio. Sem planilha e
+                com privacidade levada a sério.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>A verdade volta para o anúncio</h3>
+              <p>
+                Quando o lead vira uma avaliação agendada ou realizada, a
+                plataforma devolve essa conversão para a plataforma de anúncio
+                que o trouxe: conversões offline no Google Ads (pelo GCLID) e
+                eventos de conversão na Meta. Telefone e e-mail viajam apenas
+                como hash SHA-256; nada mais sobre o paciente sai do sistema.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>O painel mostra o custo do que importa</h3>
+              <p>
+                Para cada campanha: investimento, leads, avaliações agendadas e
+                realizadas, e o custo por avaliação. A equipe da Ybyatã opera as
+                contas; a dona da clínica vê o relatório da própria clínica,
+                legível em um minuto.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Google Ads na Ybyatã</h2>
+        <div class="pilares">
+          <div class="pilar">
+            <h3>O modelo</h3>
+            <p>
+              As contas de Google Ads das clínicas ficam vinculadas à conta de
+              administrador (MCC) da Ybyatã. A equipe da Ybyatã opera as contas.
+              A integração com a Google Ads API usa credenciais da própria
+              Ybyatã, roda em rotinas do servidor e nunca é acionada diretamente
+              por uma usuária final; nenhuma pessoa da clínica se autentica no
+              Google pela plataforma.
+            </p>
+          </div>
+          <div class="pilar">
+            <h3>O que a integração faz</h3>
+            <ul>
+              <li><strong>Relatórios</strong>: uma consulta diária por conta, no nível da campanha (investimento, cliques, impressões, conversões dos últimos 30 dias), para o painel de custo por avaliação.</li>
+              <li><strong>Conversões offline</strong>: importação de avaliações agendadas e realizadas pelo GCLID, com conversões avançadas para leads (telefone e e-mail apenas como hash). Cada envio é idempotente.</li>
+              <li><strong>Campanhas</strong>: criar e pausar campanhas a partir de poucos modelos próprios de clínica de fisioterapia. Nada é removido pela API; não há lances nem verba automáticos.</li>
+            </ul>
+          </div>
+          <div class="pilar">
+            <h3>Onde estamos</h3>
+            <p>
+              A plataforma está em desenvolvimento avançado, com a primeira
+              clínica em preparação para o lançamento. A integração com a
+              Google Ads API está em desenvolvimento; o desenho completo, em
+              inglês, está publicado em
+              <a href="google-ads-api.html" lang="en">Google Ads API tool design</a>.
+              A ferramenta é de uso interno da Ybyatã e das clínicas que ela
+              atende; não é vendida nem licenciada a terceiros.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Quem vê o quê</h2>
+        <div class="tabela">
+          <table>
+            <thead>
+              <tr><th>Quem</th><th>O que vê</th><th>Dados de anúncio</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Equipe da Ybyatã</td><td>Todas as clínicas que atende: campanhas, leads, sinais, relatórios.</td><td>Opera as contas vinculadas.</td></tr>
+              <tr><td>Dona ou dono da clínica</td><td>A própria clínica: leads, agendamentos, custo por avaliação por campanha.</td><td>Relatórios da própria clínica.</td></tr>
+              <tr><td>Recepção (atendente)</td><td>As próprias conversas e o que falta responder hoje.</td><td>Nenhum.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap prosa">
+        <h2>Privacidade</h2>
+        <p>
+          Cada clínica é um espaço próprio, isolado dos demais. O conteúdo das
+          conversas, as citações que a análise guarda e toda credencial de
+          provedor ficam criptografados em repouso, com a chave fora do banco de
+          dados. O que sai para Google Ads e Meta é a conversão e um hash de
+          telefone e e-mail, nunca a conversa. A clínica é controladora dos dados
+          de seus pacientes; a Ybyatã é operadora, sob a LGPD.
+        </p>
+        <div class="nota">
+          <strong>Política e contato</strong>
+          <a href="politica-de-privacidade.html">Política de privacidade</a> ·
+          <a href="mailto:contato@ybyata.com">contato@ybyata.com</a> ·
+          Ybyata Growth Operations Ltda, CNPJ 68.452.751/0001-82, São Paulo/SP.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Ybyata Growth Operations Ltda</span>
+      <span><a href="plataforma.html">A plataforma</a> · <a href="google-ads-api.html" lang="en">Google Ads API</a> · <a href="politica-de-privacidade.html">Política de Privacidade</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -27,7 +27,11 @@
     }
     .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
     header { padding: 28px 0; border-bottom: 1px solid rgba(38,32,25,.12); }
-    .marca { display: flex; align-items: center; }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .marca { display: flex; align-items: center; text-decoration: none; }
+    nav { display: flex; gap: 22px; font-size: .9rem; }
+    nav a { color: rgba(38,32,25,.75); text-decoration: none; }
+    nav a:hover { color: var(--carmim); }
     .marca span {
       font-family: "Cormorant", serif; font-weight: 600; font-size: 17px;
       letter-spacing: .34em; color: var(--tinta); transform: translateY(1px);
@@ -49,6 +53,8 @@
     .pilar h3 { font-family: "Cormorant", serif; font-weight: 700; font-size: 1.35rem; margin-bottom: 8px; }
     .pilar h3::before { content: ""; display: block; width: 28px; height: 2px; background: var(--ouro); margin-bottom: 10px; }
     .pilar p { color: rgba(38,32,25,.8); font-size: .98rem; }
+    .pilar a { color: var(--carmim); text-decoration: none; }
+    .pilar a:hover { text-decoration: underline; }
     .pacto p { max-width: 62ch; margin-bottom: 16px; }
     .pacto .assinatura { font-family: "Cormorant", serif; font-style: italic; font-size: 1.3rem; color: var(--carmim); }
     .dados { background: var(--claro); border: 1px solid rgba(38,32,25,.12); border-radius: 14px;
@@ -67,8 +73,13 @@
 </head>
 <body>
   <header>
-    <div class="wrap marca">
-      <span>YBYATÃ</span>
+    <div class="wrap">
+      <a class="marca" href="./"><span>YBYATÃ</span></a>
+      <nav>
+        <a href="plataforma.html">A plataforma</a>
+        <a href="google-ads-api.html" lang="en">Google Ads API</a>
+        <a href="politica-de-privacidade.html">Privacidade</a>
+      </nav>
     </div>
   </header>
 
@@ -90,9 +101,11 @@
           <div class="pilar">
             <h3>Aquisição com atribuição de verdade</h3>
             <p>
-              Cada paciente que chega por um anúncio, acompanhado do primeiro
-              clique até a recepção. O investimento aprende com o que acontece
-              de verdade na clínica, não com estimativas.
+              Cada paciente que chega por um anúncio no Google Ads ou na Meta,
+              acompanhado do primeiro clique até a recepção. O agendamento e o
+              comparecimento voltam para a plataforma de anúncio como conversão:
+              o investimento aprende com o que acontece de verdade na clínica,
+              não com estimativas. <a href="plataforma.html">Como funciona</a>.
             </p>
           </div>
           <div class="pilar">
@@ -153,7 +166,7 @@
   <footer>
     <div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;width:100%">
       <span>© 2026 Ybyata Growth Operations Ltda</span>
-      <a href="politica-de-privacidade.html">Política de Privacidade</a>
+      <span><a href="plataforma.html">A plataforma</a> · <a href="google-ads-api.html" lang="en">Google Ads API</a> · <a href="politica-de-privacidade.html">Política de Privacidade</a></span>
     </div>
   </footer>
 </body>
