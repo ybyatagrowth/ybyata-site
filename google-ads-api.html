@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Ads API tool design · Ybyatã</title>
+  <meta name="description" content="How Ybyatã Growth Operations uses the Google Ads API: company and business model, what the tool is, intended API usage (reporting, offline click conversions, campaign management), architecture, data handling, volumes, users and access.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #F5F2E7; color: #262019; font-family: "Alegreya Sans", system-ui, sans-serif;
+      font-size: 17px; line-height: 1.7; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 72px; }
+    a { color: #A11E30; }
+    h1 { font-family: "Cormorant", serif; font-weight: 700; font-size: 2.4rem; margin-bottom: 8px; line-height: 1.1; }
+    h2 { font-family: "Cormorant", serif; font-weight: 700; font-size: 1.5rem; margin: 36px 0 10px; }
+    h3 { font-family: "Cormorant", serif; font-weight: 700; font-size: 1.2rem; margin: 22px 0 6px; }
+    p, li { color: rgba(38,32,25,.85); margin-bottom: 12px; }
+    ul { padding-left: 22px; }
+    pre { background: #FBF8EF; border: 1px solid rgba(38,32,25,.12); border-radius: 10px; padding: 14px 16px;
+      font-size: .85rem; line-height: 1.5; overflow-x: auto; margin-bottom: 14px; }
+    .volta { display: inline-block; margin-bottom: 32px; font-size: .9rem; text-decoration: none; }
+    .atualizada { font-size: .85rem; color: rgba(38,32,25,.55); margin-bottom: 28px; }
+    .status { background: #FBF8EF; border: 1px solid rgba(38,32,25,.12); border-radius: 10px; padding: 14px 18px; font-size: .95rem; margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="volta" href="./">← ybyata.com</a>
+    <h1>Ybyatã: Google Ads API tool design</h1>
+    <p class="atualizada">Published September 2026 · Ybyata Growth Operations Ltda · <a href="plataforma.html" lang="pt-BR">Versão em português</a></p>
+
+    <p class="status">
+      <strong>Status.</strong> The platform is in advanced development, with the
+      first client clinic being onboarded. Section 3 describes intended usage of
+      the Google Ads API, which is what the access application asks for. Section
+      4 describes data handling as the system actually stands on the date above.
+    </p>
+
+    <h2>1. Company and business model</h2>
+    <p>
+      Ybyatã Growth Operations (ybyata.com) is a Brazilian marketing agency and
+      software company serving physiotherapy and other health clinics. Clinics
+      pay a monthly fee. In exchange, Ybyatã runs their paid acquisition on
+      Google Ads and Meta and operates the software that follows every lead from
+      the ad click, through the WhatsApp conversation with the clinic's front
+      desk, to a booked and attended evaluation appointment.
+    </p>
+    <p>
+      The Google Ads accounts of client clinics are linked under Ybyatã's
+      manager account (MCC). Ybyatã's team operates them.
+    </p>
+
+    <h2>2. What the tool is</h2>
+    <p>
+      A single web application (Elixir/Phoenix, PostgreSQL) hosted by Ybyatã.
+      Users sign in with their e-mail. Each clinic is a tenant with its own data,
+      isolated by an organization id carried on every row.
+    </p>
+    <p>
+      Access is granted per organization. Roles: Ybyatã staff (agency) operate
+      the linked accounts and see every clinic they manage; clinic owners see
+      reports for their own clinic; front-desk staff (the people who answer the
+      WhatsApp) get no advertising data at all.
+    </p>
+    <p>
+      The Google Ads API is called only by background jobs of this application,
+      never by end users directly, and always with Ybyatã's own credentials. No
+      clinic user authenticates with Google. The tool is not sold or licensed to
+      third parties.
+    </p>
+
+    <h2>3. Intended API usage</h2>
+    <h3>3.1 Reporting (read)</h3>
+    <p>
+      Once per day per linked account, a job runs a GoogleAdsService.SearchStream
+      query at campaign level for the previous 30 days:
+    </p>
+<pre>SELECT campaign.id, campaign.name, campaign.status,
+       segments.date, metrics.cost_micros, metrics.clicks,
+       metrics.impressions, metrics.conversions
+FROM campaign
+WHERE segments.date DURING LAST_30_DAYS</pre>
+    <p>
+      Results are stored keyed by campaign.id so that each clinic's dashboard
+      shows spend, leads and booked appointments per campaign on one row, and
+      cost per booked appointment derived from real appointments recorded in
+      our system, not from form fills.
+    </p>
+
+    <h3>3.2 Offline click conversions (write)</h3>
+    <p>
+      When a lead we tracked (the landing page stores the GCLID or WBRAID on the
+      lead record) becomes a booked or attended appointment, a job calls
+      ConversionUploadService.UploadClickConversions with:
+    </p>
+    <ul>
+      <li>gclid or wbraid, conversion_action, conversion_date_time, currency, optional value;</li>
+      <li>enhanced conversions for leads: hashed (SHA-256) phone number and, when present, hashed e-mail, sent through user_identifiers.</li>
+    </ul>
+    <p>
+      Each upload is idempotent: a conversion is claimed in our database before
+      the call and marked as sent on success, so retries never double-count.
+      Conversion actions are created once per account by Ybyatã staff.
+    </p>
+
+    <h3>3.3 Campaign management (write, later phase)</h3>
+    <p>
+      Physiotherapy clinics need the same few campaign structures. Ybyatã staff
+      will create and pause campaigns for managed accounts from a small set of
+      predefined templates (for example: a search campaign for "fisioterapia"
+      plus neighbourhood terms, with call and message assets). Services used:
+      CampaignBudgetService, CampaignService, AdGroupService, AdGroupAdService,
+      AdGroupCriterionService, with status changes limited to ENABLED and PAUSED.
+      Nothing is ever removed through the API. Every mutation is triggered by a
+      staff action or by a deterministic reconciliation job that applies exactly
+      what staff declared; there is no autonomous bidding or budget logic.
+    </p>
+
+    <h2>4. Architecture and data flow</h2>
+<pre>Clinic's landing page  --gclid-->  Ybyatã app (lead record)
+WhatsApp Cloud API     --webhook-> Ybyatã app (conversation, appointment)
+Ybyatã app background jobs  <----> Google Ads API (reports, conversion uploads,
+                                    campaign mutations) using Ybyatã's OAuth
+                                    refresh token and developer token,
+                                    login-customer-id = Ybyatã MCC
+Ybyatã app  ---> dashboards for staff and clinic owners</pre>
+    <p>
+      Credentials: the developer token, OAuth client and refresh token are
+      Ybyatã-owned and kept in environment configuration on the server, never in
+      the database and never in the client-facing application. Per-clinic Google
+      data (customer id, conversion action ids) lives in the database next to the
+      clinic's other configuration.
+    </p>
+    <p>How personal data is handled, stated as it stands today:</p>
+    <ul>
+      <li>Names, phone numbers and e-mail addresses are stored in ordinary database columns. They are reachable only through Ybyatã's own application and by Ybyatã staff; the database is not publicly exposed, and no clinic user or third party is given direct access to it.</li>
+      <li>Application-level encryption (AES-GCM, with the key held outside the database) is applied to conversation content (WhatsApp message bodies, the verbatim quotes our analysis stores, the analyzer's prompts and results) and to every provider access token we hold.</li>
+      <li>On the Google path, personal data never leaves the system in the clear: phone and e-mail are sent to the Google Ads API only as SHA-256 hashes, inside user_identifiers on the conversion upload, which is what enhanced conversions for leads requires. Nothing else about a patient is uploaded.</li>
+    </ul>
+
+    <h2>5. Volume and rate limits</h2>
+    <ul>
+      <li>Fewer than 10 linked accounts in the first year.</li>
+      <li>Reporting: one SearchStream request per account per day.</li>
+      <li>Conversion uploads: batched, a few dozen per account per day at most.</li>
+      <li>Campaign mutations: rare, staff-triggered.</li>
+      <li>Expected total: a few hundred operations per day. Jobs use exponential backoff on RESOURCE_EXHAUSTED and RATE_EXCEEDED errors.</li>
+    </ul>
+
+    <h2>6. Users and access</h2>
+    <ul>
+      <li>Internal: Ybyatã staff operate campaigns and see all accounts they manage.</li>
+      <li>External: clinic owners see reports for their own clinic only.</li>
+      <li>The API tool is not offered to the general public.</li>
+    </ul>
+
+    <h2>7. Contact</h2>
+    <p>
+      Ybyata Growth Operations Ltda, CNPJ 68.452.751/0001-82, R. Pais Leme, 215,
+      Conj. 1713, Pinheiros, São Paulo/SP, Brasil ·
+      <a href="mailto:contato@ybyata.com">contato@ybyata.com</a> ·
+      Privacy policy: <a href="politica-de-privacidade.html">ybyata.com/politica-de-privacidade</a>
+    </p>
+  </div>
+</body>
+</html>
