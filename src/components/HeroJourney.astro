@@ -54,7 +54,7 @@ const card = "rounded-2xl border border-line bg-card/95 p-4 shadow-[0_18px_50px_
     <circle cx="400" cy="540" r="5" fill="var(--color-carmine)" />
   </svg>
 
-  <div class="relative flex flex-col gap-3 lg:block">
+  <div class="stack relative flex flex-col lg:block">
     <div class="lg:absolute lg:left-0 lg:top-0 lg:w-[270px]" data-parallax="0.04">
       <div class:list={[card, "lg:-rotate-2"]} data-reveal style="--d: 1">
         <p class="text-[0.7rem] font-bold text-muted-ink">{c.sponsored}</p>
@@ -103,3 +103,21 @@ const card = "rounded-2xl border border-line bg-card/95 p-4 shadow-[0_18px_50px_
     </div>
   </div>
 </div>
+
+<style>
+  /* Below desktop the four pieces become a thread: narrower, alternating sides, each tilted a
+     little and tucked under the one before, so the overlap reads as intended. */
+  @media (max-width: 1023px) {
+    .stack > div { width: min(88%, 340px); position: relative; }
+    .stack > div:nth-child(odd) { align-self: flex-start; rotate: -1.5deg; }
+    .stack > div:nth-child(even) { align-self: flex-end; rotate: 1.5deg; }
+    .stack > div + div { margin-top: -14px; }
+    .stack > div:nth-child(1) { z-index: 1; }
+    .stack > div:nth-child(2) { z-index: 2; }
+    .stack > div:nth-child(3) { z-index: 3; }
+    .stack > div:nth-child(4) { z-index: 4; }
+  }
+  @media (max-width: 1023px) and (min-width: 640px) {
+    .stack > div + div { margin-top: -28px; }
+  }
+</style>
