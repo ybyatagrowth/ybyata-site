@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The platform · Ybyatã</title>
+  <meta name="description" content="The Ybyatã platform follows every patient from the ad click to the clinic, and tells Google Ads and Meta what really happened. How it works, what is measured, who sees what.">
+  <link rel="alternate" hreflang="pt-BR" href="https://ybyata.com/plataforma.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,600;0,700;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --osso: #F5F2E7;
+      --tinta: #262019;
+      --carmim: #A11E30;
+      --musgo: #5F6E44;
+      --ouro: #96741F;
+      --claro: #FBF8EF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--osso);
+      color: var(--tinta);
+      font-family: "Alegreya Sans", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    a { color: var(--carmim); }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 28px 0; border-bottom: 1px solid rgba(38,32,25,.12); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .marca { display: flex; align-items: center; text-decoration: none; }
+    .marca span {
+      font-family: "Cormorant", serif; font-weight: 600; font-size: 17px;
+      letter-spacing: .34em; color: var(--tinta); transform: translateY(1px);
+    }
+    nav { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .9rem; }
+    nav a { white-space: nowrap; }
+    nav a { color: rgba(38,32,25,.75); text-decoration: none; }
+    nav a[aria-current] { color: var(--tinta); font-weight: 700; }
+    nav a:hover { color: var(--carmim); }
+    nav a.idioma { border-left: 1px solid rgba(38,32,25,.2); padding-left: 22px; }
+    figure { margin: 22px 0 0; max-width: 720px; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid rgba(38,32,25,.15); border-radius: 12px; box-shadow: 0 6px 24px rgba(38,32,25,.08); }
+    figcaption { font-size: .85rem; color: rgba(38,32,25,.6); margin-top: 8px; }
+    .hero { padding-top: 80px; padding-bottom: 56px; }
+    .hero h1 {
+      font-family: "Cormorant", serif; font-weight: 700;
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.08; max-width: 20ch;
+    }
+    .hero h1 em { font-style: italic; color: var(--carmim); }
+    .hero p.mote { margin-top: 22px; font-size: 1.2rem; color: rgba(38,32,25,.75); max-width: 52ch; }
+    section { padding: 56px 0; border-top: 1px solid rgba(38,32,25,.12); }
+    h2 { font-family: "Cormorant", serif; font-weight: 700; font-size: 2rem; margin-bottom: 24px; }
+    h3 { font-family: "Cormorant", serif; font-weight: 700; font-size: 1.35rem; margin-bottom: 8px; }
+    p { max-width: 66ch; }
+    .prosa p { margin-bottom: 16px; color: rgba(38,32,25,.85); }
+    ol.passos { list-style: none; counter-reset: passo; display: grid; gap: 28px; }
+    ol.passos li { counter-increment: passo; display: grid; grid-template-columns: 56px 1fr; gap: 18px; }
+    ol.passos li::before {
+      content: counter(passo); font-family: "Cormorant", serif; font-weight: 700; font-size: 2.2rem;
+      line-height: 1; color: var(--ouro);
+    }
+    ol.passos p { color: rgba(38,32,25,.85); font-size: .98rem; }
+    .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .pilar h3::before { content: ""; display: block; width: 28px; height: 2px; background: var(--ouro); margin-bottom: 10px; }
+    .pilar p { color: rgba(38,32,25,.8); font-size: .98rem; }
+    .pilar ul { padding-left: 18px; color: rgba(38,32,25,.8); font-size: .98rem; }
+    .pilar li { margin-bottom: 6px; }
+    .nota {
+      background: var(--claro); border: 1px solid rgba(38,32,25,.12); border-radius: 14px;
+      padding: 24px 28px; font-size: .95rem; max-width: 66ch;
+    }
+    .nota strong { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(38,32,25,.55); display: block; margin-bottom: 6px; }
+    table { border-collapse: collapse; width: 100%; max-width: 720px; font-size: .95rem; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(38,32,25,.12); vertical-align: top; }
+    th { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(38,32,25,.55); font-weight: 700; }
+    .tabela { overflow-x: auto; }
+    footer { padding: 36px 0 48px; border-top: 1px solid rgba(38,32,25,.12); font-size: .85rem; color: rgba(38,32,25,.6); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+    footer a { color: inherit; }
+  </style>
+</head>
+  <header>
+    <div class="wrap">
+      <a class="marca" href="./"><span>YBYATÃ</span></a>
+      <nav>
+        <a href="platform.html" aria-current="page">The platform</a>
+        <a href="../google-ads-api.html">Google Ads API</a>
+        <a href="privacy.html">Privacy</a>
+        <a class="idioma" href="../plataforma.html" lang="pt-BR" hreflang="pt-BR">Português</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <h1>From the ad click to the clinic chair. <em>With the truth coming back.</em></h1>
+      <p class="mote">
+        Ybyatã is an agency and a software company for physiotherapy and health
+        clinics. We run the clinics' ads on Google Ads and Meta, and our platform
+        follows every patient they bring: from the click, through the conversation
+        on the front desk's WhatsApp, to the appointment booked and attended. What
+        happens at the clinic goes back to the ad as a conversion. That's how the
+        spend learns from reality.
+      </p>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <h2>How it works</h2>
+        <ol class="passos">
+          <li>
+            <div>
+              <h3>The ad brings the patient</h3>
+              <p>
+                Campaigns on Google Ads and Meta lead to the clinic's page. The page
+                keeps the click identifier (Google's GCLID, Meta's click id) together
+                with the contact the person leaves. Every lead is born knowing where
+                it came from.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>The conversation happens on the clinic's WhatsApp</h3>
+              <p>
+                The front desk answers as it always has, on WhatsApp Business. The
+                platform follows the conversation through the WhatsApp Business
+                Platform (Meta) and turns it into signals: an appointment booked, a
+                patient who came, a price objection, a question about insurance. No
+                spreadsheets, and with privacy taken seriously.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>The truth goes back to the ad</h3>
+              <p>
+                When the lead becomes a booked or attended appointment, the platform
+                sends that conversion back to the ad platform that brought it:
+                offline conversions in Google Ads (by GCLID) and conversion events in
+                Meta. Phone and e-mail travel only as SHA-256 hashes; nothing else
+                about the patient leaves the system.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>The dashboard shows the cost of what matters</h3>
+              <p>
+                For each campaign: spend, leads, appointments booked and attended,
+                and the cost per booking. Ybyatã's team operates the accounts; the
+                clinic's owner sees their own clinic's report, readable in a minute.
+              </p>
+              <figure>
+                <img src="../img/campaigns.png" width="1110" height="451" loading="lazy"
+                  alt="Reports: cost per booking for each campaign, with the platform (Meta or Google), spend, leads and bookings.">
+                <figcaption>The platform's Reports screen, with demonstration data (no real patients).</figcaption>
+              </figure>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Google Ads at Ybyatã</h2>
+        <div class="pilares">
+          <div class="pilar">
+            <h3>The model</h3>
+            <p>
+              The clinics' Google Ads accounts are linked to Ybyatã's manager account
+              (MCC), and Ybyatã's team operates them. The Google Ads API integration
+              uses Ybyatã's own credentials, runs in server jobs and is never called
+              by an end user; no one at the clinic signs in to Google through the
+              platform.
+            </p>
+          </div>
+          <div class="pilar">
+            <h3>What the integration does</h3>
+            <ul>
+              <li><strong>Reporting</strong>: every six hours, one campaign-level query per account re-reads the daily spend of the last seven days, for the cost-per-booking dashboard.</li>
+              <li><strong>Offline conversions</strong>: bookings and visits go back to Google by the click id (GCLID); without one, as enhanced conversions for leads (phone and e-mail only as hashes). Every upload is idempotent.</li>
+              <li><strong>That's all</strong>: the API doesn't create, change or remove campaigns, ads, budgets or bids. Ybyatã's team manages campaigns in the Google Ads interface.</li>
+            </ul>
+          </div>
+          <div class="pilar">
+            <h3>Where we are</h3>
+            <p>
+              The platform is built and runs on Google Cloud, in São Paulo, with the
+              first client clinic being onboarded. The full design of the
+              integration is published in
+              <a href="../google-ads-api.html">Google Ads API tool design</a>.
+              The tool is for Ybyatã and the clinics it serves; it is not sold or
+              licensed to third parties.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Who sees what</h2>
+        <div class="tabela">
+          <table>
+            <thead>
+              <tr><th>Who</th><th>What they see</th><th>Ad data</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Ybyatã's team</td><td>Every clinic it serves: campaigns, leads, signals, reports.</td><td>Operates the linked accounts.</td></tr>
+              <tr><td>The clinic's owner</td><td>Their own clinic: leads, bookings, cost per booking by campaign.</td><td>Their own clinic's reports.</td></tr>
+              <tr><td>Front desk</td><td>Their own conversations and what still needs an answer today.</td><td>None.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap prosa">
+        <h2>Privacy</h2>
+        <p>
+          Each clinic is its own space, isolated from the others by the database
+          itself. Everything stays in São Paulo, encrypted in transit and at rest;
+          the credentials a clinic connects (WhatsApp, payments) are also encrypted
+          by the application, with the key kept outside the database. What goes to
+          Google Ads and Meta is the conversion and a hash of phone and e-mail,
+          never the conversation. The clinic is the controller of its patients'
+          data; Ybyatã is the processor, under Brazil's LGPD.
+        </p>
+        <div class="nota">
+          <strong>Policy and contact</strong>
+          <a href="privacy.html">Privacy policy</a> ·
+          <a href="mailto:contato@ybyata.com">contato@ybyata.com</a> ·
+          Ybyata Growth Operations Ltda, CNPJ 68.452.751/0001-82, São Paulo/SP, Brazil.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Ybyata Growth Operations Ltda</span>
+      <span><a href="platform.html">The platform</a> · <a href="../google-ads-api.html">Google Ads API</a> · <a href="privacy.html">Privacy Policy</a> · <a href="../plataforma.html" lang="pt-BR">Português</a></span>
+    </div>
+  </footer>
+</body>
+</html>
