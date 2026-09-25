@@ -1,0 +1,44 @@
+---
+import { routes, ui, type Locale, type Route } from "../i18n"
+import { whatsappLink } from "../site"
+import Logo from "./Logo.astro"
+
+interface Props { locale: Locale; route: Route; dark?: boolean }
+const { locale, route, dark = false } = Astro.props
+const t = ui[locale]
+const other: Locale = locale === "pt-BR" ? "en" : "pt-BR"
+const links = [
+  { key: "platform", label: t.nav.platform },
+  { key: "service", label: t.nav.service },
+] as const
+---
+
+<header data-header class:list={["group fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,color] duration-300", dark ? "is-dark text-night-ink" : "text-ink"]}>
+  <div class="wrap flex h-16 items-center justify-between gap-4 sm:h-[72px]">
+    <a href={routes.home[locale]} class="flex shrink-0 items-center" aria-label="Ybyatã">
+      <span class="logo text-carmine"><Logo class="h-9 w-auto sm:h-10" /></span>
+    </a>
+    <nav class="hidden items-center gap-7 text-[0.95rem] md:flex" aria-label="Principal">
+      {links.map((l) => (
+        <a href={routes[l.key][locale]} class:list={["opacity-80 transition-opacity hover:opacity-100", route === l.key && "font-bold opacity-100"]} aria-current={route === l.key ? "page" : undefined}>{l.label}</a>
+      ))}
+      <a href={routes[route][other]} lang={other} hreflang={other} class="border-l border-current/20 pl-7 opacity-70 hover:opacity-100">{t.switchTo}</a>
+      <a href={whatsappLink(t.talkMessage)} class="btn-primary !py-2 !text-sm" rel="noopener">{t.talk}</a>
+    </nav>
+    <details class="relative md:hidden">
+      <summary class="list-none cursor-pointer rounded-full border border-current/20 px-4 py-1.5 text-sm font-bold [&::-webkit-details-marker]:hidden">{t.menu}</summary>
+      <div class="absolute right-0 top-12 w-64 rounded-2xl border border-line bg-card p-3 text-ink shadow-xl">
+        {links.map((l) => (
+          <a href={routes[l.key][locale]} class="block rounded-lg px-3 py-2.5 hover:bg-muted">{l.label}</a>
+        ))}
+        <a href={routes[route][other]} lang={other} class="block rounded-lg px-3 py-2.5 text-muted-ink hover:bg-muted">{t.switchTo}</a>
+        <a href={whatsappLink(t.talkMessage)} class="btn-primary mt-2 w-full" rel="noopener">{t.talk}</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<style>
+  [data-header].is-scrolled { background: color-mix(in srgb, var(--color-paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent); color: var(--color-ink); }
+  [data-header].is-dark:not(.is-scrolled) .logo { color: var(--color-night-ink); }
+</style>

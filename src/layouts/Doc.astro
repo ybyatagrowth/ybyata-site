@@ -1,0 +1,25 @@
+---
+// A document to read: the privacy policy, the terms, the Google Ads API design. Narrow, plain,
+// no motion.
+import Base from "./Base.astro"
+import type { Locale, Route } from "../i18n"
+
+interface Props {
+  title: string
+  heading: string
+  description: string
+  updated: string
+  locale: Locale
+  route: Route
+  body: string
+}
+const { title, heading, description, updated, locale, route, body } = Astro.props
+---
+
+<Base title={title} description={description} locale={locale} route={route}>
+  <article class="wrap max-w-3xl pb-24 pt-32 sm:pt-40">
+    <h1 class="display text-[clamp(2.4rem,5vw,3.6rem)]">{heading}</h1>
+    <p class="mt-3 text-sm text-muted-ink [&_a]:text-carmine [&_a]:underline" set:html={updated} />
+    <div class="prose-doc mt-10" set:html={body} />
+  </article>
+</Base>

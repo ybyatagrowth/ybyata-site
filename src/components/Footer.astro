@@ -1,0 +1,41 @@
+---
+import { routes, ui, type Locale, type Route } from "../i18n"
+import { company, contact } from "../site"
+import Logo from "./Logo.astro"
+
+interface Props { locale: Locale; route: Route }
+const { locale, route } = Astro.props
+const t = ui[locale]
+const other: Locale = locale === "pt-BR" ? "en" : "pt-BR"
+---
+
+<footer class="border-t border-line bg-paper">
+  <div class="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="lg:col-span-2">
+      <a href={routes.home[locale]} class="inline-block text-carmine" aria-label="Ybyatã"><Logo class="h-8 w-auto" /></a>
+      <p class="mt-4 max-w-sm text-sm text-muted-ink">
+        {locale === "pt-BR" ? "Resultado agora. Raízes para durar." : "Results now. Roots that last."}
+      </p>
+    </div>
+    <div class="text-sm">
+      <p class="eyebrow mb-3">{t.footer.company}</p>
+      <p>{company.name}</p>
+      <p class="text-muted-ink">{t.footer.cnpj} {company.cnpj}</p>
+      <p class="text-muted-ink">{company.address}</p>
+      <p class="mt-2"><a class="hover:text-carmine" href={`mailto:${contact.email}`}>{contact.email}</a></p>
+    </div>
+    <div class="text-sm">
+      <p class="eyebrow mb-3">{t.footer.legal}</p>
+      <ul class="space-y-1.5">
+        <li><a class="hover:text-carmine" href={routes.privacy[locale]}>{t.footer.privacy}</a></li>
+        <li><a class="hover:text-carmine" href={routes.terms[locale]}>{t.footer.terms}</a></li>
+        <li><a class="hover:text-carmine" href={routes.deletion[locale]}>{t.footer.deletion}</a></li>
+        <li><a class="hover:text-carmine" href={routes.googleAds[locale]} lang="en">{t.footer.googleAds}</a></li>
+        <li><a class="hover:text-carmine" href={routes[route][other]} lang={other} hreflang={other}>{t.switchTo}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap border-t border-line py-6 text-xs text-muted-ink">
+    © {new Date().getFullYear()} {company.name}. {t.footer.rights}
+  </div>
+</footer>
