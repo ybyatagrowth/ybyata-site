@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A plataforma · Ybyatã</title>
   <meta name="description" content="A plataforma Ybyatã acompanha cada paciente do clique no anúncio ao atendimento na clínica, e devolve ao Google Ads e à Meta a verdade do que aconteceu. Como funciona, o que é medido, quem vê o quê.">
+  <link rel="alternate" hreflang="en" href="https://ybyata.com/en/platform.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,600;0,700;1,600&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -34,11 +35,16 @@
       font-family: "Cormorant", serif; font-weight: 600; font-size: 17px;
       letter-spacing: .34em; color: var(--tinta); transform: translateY(1px);
     }
-    nav { display: flex; gap: 22px; font-size: .9rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .9rem; }
+    nav a { white-space: nowrap; }
     nav a { color: rgba(38,32,25,.75); text-decoration: none; }
     nav a[aria-current] { color: var(--tinta); font-weight: 700; }
     nav a:hover { color: var(--carmim); }
-    .hero { padding: 80px 0 56px; }
+    nav a.idioma { border-left: 1px solid rgba(38,32,25,.2); padding-left: 22px; }
+    figure { margin: 22px 0 0; max-width: 720px; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid rgba(38,32,25,.15); border-radius: 12px; box-shadow: 0 6px 24px rgba(38,32,25,.08); }
+    figcaption { font-size: .85rem; color: rgba(38,32,25,.6); margin-top: 8px; }
+    .hero { padding-top: 80px; padding-bottom: 56px; }
     .hero h1 {
       font-family: "Cormorant", serif; font-weight: 700;
       font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.08; max-width: 20ch;
@@ -84,6 +90,7 @@
         <a href="plataforma.html" aria-current="page">A plataforma</a>
         <a href="google-ads-api.html" lang="en">Google Ads API</a>
         <a href="politica-de-privacidade.html">Privacidade</a>
+        <a class="idioma" href="en/platform.html" lang="en" hreflang="en">English</a>
       </nav>
     </div>
   </header>
@@ -149,6 +156,11 @@
                 contas; a dona da clínica vê o relatório da própria clínica,
                 legível em um minuto.
               </p>
+              <figure>
+                <img src="img/campaigns.png" width="1110" height="451" loading="lazy"
+                  alt="Relatórios: custo por agendamento de cada campanha, com a plataforma (Meta ou Google), o investimento, os leads e os agendamentos.">
+                <figcaption>A tela de relatórios da plataforma, com dados de demonstração (sem pacientes reais).</figcaption>
+              </figure>
             </div>
           </li>
         </ol>
@@ -173,18 +185,17 @@
           <div class="pilar">
             <h3>O que a integração faz</h3>
             <ul>
-              <li><strong>Relatórios</strong>: uma consulta diária por conta, no nível da campanha (investimento, cliques, impressões, conversões dos últimos 30 dias), para o painel de custo por avaliação.</li>
-              <li><strong>Conversões offline</strong>: importação de avaliações agendadas e realizadas pelo GCLID, com conversões avançadas para leads (telefone e e-mail apenas como hash). Cada envio é idempotente.</li>
-              <li><strong>Campanhas</strong>: criar e pausar campanhas a partir de poucos modelos próprios de clínica de fisioterapia. Nada é removido pela API; não há lances nem verba automáticos.</li>
+              <li><strong>Relatórios</strong>: a cada seis horas, uma consulta por conta, no nível da campanha, relê o investimento por dia dos últimos sete dias, para o painel de custo por agendamento.</li>
+              <li><strong>Conversões offline</strong>: agendamentos e comparecimentos voltam ao Google pelo identificador do clique (GCLID); sem ele, com conversões avançadas para leads (telefone e e-mail apenas como hash). Cada envio é idempotente.</li>
+              <li><strong>Só isso</strong>: a API não cria, altera nem remove campanhas, anúncios, verbas ou lances. As campanhas são geridas pela equipe da Ybyatã na própria interface do Google Ads.</li>
             </ul>
           </div>
           <div class="pilar">
             <h3>Onde estamos</h3>
             <p>
-              A plataforma está em desenvolvimento avançado, com a primeira
-              clínica em preparação para o lançamento. A integração com a
-              Google Ads API está em desenvolvimento; o desenho completo, em
-              inglês, está publicado em
+              A plataforma está construída e roda no Google Cloud, em São
+              Paulo, com a primeira clínica cliente em implantação. O desenho
+              completo da integração, em inglês, está publicado em
               <a href="google-ads-api.html" lang="en">Google Ads API tool design</a>.
               A ferramenta é de uso interno da Ybyatã e das clínicas que ela
               atende; não é vendida nem licenciada a terceiros.
@@ -216,9 +227,10 @@
       <div class="wrap prosa">
         <h2>Privacidade</h2>
         <p>
-          Cada clínica é um espaço próprio, isolado dos demais. O conteúdo das
-          conversas, as citações que a análise guarda e toda credencial de
-          provedor ficam criptografados em repouso, com a chave fora do banco de
+          Cada clínica é um espaço próprio, isolado dos demais pelo próprio banco
+          de dados. Tudo fica em São Paulo, criptografado em trânsito e em
+          repouso; as credenciais que a clínica conecta (WhatsApp, pagamentos)
+          são criptografadas também pela aplicação, com a chave fora do banco de
           dados. O que sai para Google Ads e Meta é a conversão e um hash de
           telefone e e-mail, nunca a conversa. A clínica é controladora dos dados
           de seus pacientes; a Ybyatã é operadora, sob a LGPD.
@@ -236,7 +248,7 @@
   <footer>
     <div class="wrap">
       <span>© 2026 Ybyata Growth Operations Ltda</span>
-      <span><a href="plataforma.html">A plataforma</a> · <a href="google-ads-api.html" lang="en">Google Ads API</a> · <a href="politica-de-privacidade.html">Política de Privacidade</a></span>
+      <span><a href="plataforma.html">A plataforma</a> · <a href="google-ads-api.html" lang="en">Google Ads API</a> · <a href="politica-de-privacidade.html">Política de Privacidade</a> · <a href="en/platform.html" lang="en">English</a></span>
     </div>
   </footer>
 </body>
