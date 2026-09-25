@@ -19,7 +19,7 @@ export const platform = {
         eyebrow: "Conversas", ai: true,
         title: "Ninguém fica sem resposta.",
         body: "Todas as conversas do WhatsApp da clínica num lugar só, com quem está esperando e há quanto tempo. A IA transcreve os áudios e rascunha respostas com a agenda e os preços da clínica; a recepção revisa e envia.",
-        media: { clip: "inbox", w: 1168, h: 900, alt: "A caixa de entrada: conversas esperando resposta, com o tempo de espera." } as Media,
+        media: { image: "/media/reply-draft.png", w: 1168, h: 900, alt: "Uma conversa aberta com uma resposta escrita pela IA, para a recepção ler antes de enviar." } as Media,
       },
       {
         eyebrow: "Aprovações", ai: true,
@@ -49,7 +49,7 @@ export const platform = {
         eyebrow: "Assistente", ai: true,
         title: "Pergunte à Ybyatã.",
         body: "Um assistente que conhece a agenda, os pacientes e os números da clínica. Pergunte como a semana está, quem está esperando resposta ou quanto entrou, e ele responde com os dados da própria clínica.",
-        media: { image: "/media/assistant.png", w: 1168, h: 900, alt: "O assistente aberto sobre a agenda, com sugestões de perguntas." } as Media,
+        media: { clip: "assistant", w: 1168, h: 900, alt: "Uma pergunta ao assistente e a resposta com os números dos últimos 30 dias." } as Media,
       },
     ],
     more: {
@@ -108,7 +108,7 @@ export const platform = {
         eyebrow: "Conversations", ai: true,
         title: "Nobody goes unanswered.",
         body: "All the clinic's WhatsApp conversations in one place, with who's waiting and for how long. The AI transcribes voice notes and drafts replies with the clinic's schedule and prices; the front desk reviews and sends.",
-        media: { clip: "inbox", w: 1168, h: 900, alt: "The inbox: conversations waiting for an answer, with how long they've waited." } as Media,
+        media: { image: "/media/reply-draft.png", w: 1168, h: 900, alt: "An open conversation with a reply drafted by the AI, for the front desk to read before sending." } as Media,
       },
       {
         eyebrow: "Approvals", ai: true,
@@ -138,7 +138,7 @@ export const platform = {
         eyebrow: "Assistant", ai: true,
         title: "Ask Ybyatã.",
         body: "An assistant that knows the clinic's schedule, patients and numbers. Ask how the week looks, who's waiting for an answer or how much came in, and it answers from the clinic's own data.",
-        media: { image: "/media/assistant.png", w: 1168, h: 900, alt: "The assistant open over the schedule, with suggested questions." } as Media,
+        media: { clip: "assistant", w: 1168, h: 900, alt: "A question to the assistant, answered with the last 30 days' numbers." } as Media,
       },
     ],
     more: {
