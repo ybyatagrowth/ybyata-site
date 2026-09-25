@@ -2,8 +2,8 @@
 export const contact = {
   email: "contato@ybyata.com",
   phone: "+55 (11) 96799-1896",
-  /** The WhatsApp number the site's buttons open a chat with, digits only. */
-  whatsapp: "5511967991896",
+  /** Nicole's WhatsApp, which the site's buttons open a chat with (digits only). */
+  whatsapp: "5511998206079",
   /**
    * The platform's landing-page form for Ybyatã's own unit (ybyata_platform #279). Until
    * production exists this is null and the site's call to action is the WhatsApp button.

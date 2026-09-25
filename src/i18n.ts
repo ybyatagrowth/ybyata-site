@@ -59,6 +59,11 @@ export const ui = {
   },
 } as const
 
+/** A product image or clip in the page's language: the Portuguese set lives under /media/pt/. */
+export function media(src: string, locale: Locale): string {
+  return locale === "pt-BR" ? src.replace("/media/", "/media/pt/") : src
+}
+
 export function localeOf(url: URL): Locale {
   return url.pathname.startsWith("/en") ? "en" : "pt-BR"
 }

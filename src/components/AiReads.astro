@@ -1,0 +1,53 @@
+---
+// The AI at work, shown rather than claimed: a WhatsApp conversation is read line by line, and
+// what the platform found appears beside it, then a reply drafted for the team to review.
+import { ai } from "../content/ai"
+import type { Locale } from "../i18n"
+
+interface Props { locale: Locale; dark?: boolean }
+const { locale, dark = false } = Astro.props
+const d = ai[locale].demo
+const tones: Record<string, string> = { carmine: "border-carmine/40 text-carmine", gold: "border-gold/50 text-gold", moss: "border-moss/50 text-moss" }
+---
+
+<div class:list={["ai-reads relative grid gap-5 sm:grid-cols-[1.1fr_1fr]", dark && "is-dark"]} data-reveal aria-hidden="true">
+  <div class="relative overflow-hidden rounded-2xl border border-line bg-chat p-4 shadow-[0_18px_50px_-20px_rgba(38,32,25,.35)]">
+    <div class="space-y-2.5 text-[0.88rem] leading-snug text-ink">
+      <p class="line mr-10 rounded-xl rounded-tl-sm bg-card px-3 py-2 shadow-sm" style="--k: 0">{d.lead1}</p>
+      <p class="line ml-10 rounded-xl rounded-tr-sm bg-chat-out px-3 py-2 shadow-sm" style="--k: 1">{d.desk}</p>
+      <p class="line mr-10 rounded-xl rounded-tl-sm bg-card px-3 py-2 shadow-sm" style="--k: 2">{d.lead2}</p>
+    </div>
+    <span class="scan pointer-events-none absolute inset-x-0 h-16 bg-gradient-to-b from-transparent via-gold/15 to-transparent"></span>
+    <p class="mt-3 flex items-center gap-2 font-mono text-[0.7rem] text-muted-ink"><span class="dot size-1.5 rounded-full bg-carmine"></span>{d.reading}</p>
+  </div>
+  <div class="flex flex-col gap-2.5">
+    {d.found.map((f, i) => (
+      <div class="chip rounded-xl border bg-card px-3.5 py-2.5 shadow-sm" style={`--k: ${i}`}>
+        <p class:list={["text-[0.68rem] font-bold uppercase tracking-[0.12em]", tones[f.tone]]}>✦ {f.kind}</p>
+        <p class="mt-0.5 font-display text-lg font-bold leading-tight text-ink">{f.text}</p>
+      </div>
+    ))}
+    <div class="chip rounded-xl border border-dashed border-line bg-card/80 px-3.5 py-2.5" style="--k: 3">
+      <p class="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-muted-ink">✦ {d.draftLabel}</p>
+      <p class="mt-1 text-[0.85rem] leading-snug text-ink/85">{d.draft}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .js .ai-reads .line, .js .ai-reads .chip { opacity: 0; translate: 0 10px; transition: opacity .6s, translate .6s; }
+  .js .ai-reads .line { transition-delay: calc(.3s + var(--k) * .55s); }
+  .js .ai-reads .chip { transition-delay: calc(2.1s + var(--k) * .45s); translate: 14px 0; }
+  .js .ai-reads.is-in .line, .js .ai-reads.is-in .chip { opacity: 1; translate: 0 0; }
+  .ai-reads .scan { top: -4rem; }
+  .ai-reads.is-in .scan { animation: scan 2.2s .3s cubic-bezier(.5,0,.5,1) 1 both; }
+  .ai-reads .dot { animation: blink 1.2s ease-in-out infinite; }
+  @keyframes scan { from { top: -4rem; } to { top: 100%; } }
+  @keyframes blink { 50% { opacity: .2; } }
+  /* The reveal on the wrapper itself shouldn't hide the whole block while its parts stagger. */
+  .js .ai-reads[data-reveal] { opacity: 1; translate: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .ai-reads .line, .js .ai-reads .chip { opacity: 1; translate: none; transition: none; }
+    .ai-reads .scan, .ai-reads .dot { animation: none; }
+  }
+</style>

@@ -16,7 +16,7 @@ const c = {
     lead1: "Oi! Vi o anúncio. Vocês têm horário essa semana?",
     desk: "Temos quinta às 15h ou sexta às 10h 🙂",
     lead2: "Quinta às 15h, por favor!",
-    proposed: "Proposta da Ybyatã",
+    proposed: "IA da Ybyatã",
     scheduled: "Agendou",
     when: "Quinta, 15h · avaliação",
     sure: "94% de certeza",
@@ -34,7 +34,7 @@ const c = {
     lead1: "Hi! I saw the ad. Do you have any time this week?",
     desk: "We have Thursday at 3 pm or Friday at 10 am 🙂",
     lead2: "Thursday at 3 pm, please!",
-    proposed: "Ybyatã's proposal",
+    proposed: "Ybyatã AI",
     scheduled: "Scheduled",
     when: "Thursday, 3 pm · assessment",
     sure: "94% sure",
@@ -47,15 +47,15 @@ const c = {
 const card = "rounded-2xl border border-line bg-card/95 p-4 shadow-[0_18px_50px_-20px_rgba(38,32,25,.35)] backdrop-blur"
 ---
 
-<div class="relative mx-auto w-full max-w-[560px] lg:h-[600px]" aria-hidden="true">
-  <svg class="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 560 600" fill="none" data-draw style="--len: 1400">
-    <path d="M150 150 C 300 120, 360 150, 380 200 S 300 330, 200 350 S 250 460, 360 470" stroke="var(--color-carmine)" stroke-width="1.6" stroke-dasharray="1400" stroke-linecap="round" />
+<div class="relative mx-auto w-full max-w-[560px] lg:h-[680px]" aria-hidden="true">
+  <svg class="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 560 680" fill="none" data-draw style="--len: 1400">
+    <path d="M150 150 C 300 110, 380 150, 400 220 S 280 330, 180 380 S 260 520, 400 540" stroke="var(--color-carmine)" stroke-width="1.6" stroke-dasharray="1400" stroke-linecap="round" />
     <circle cx="150" cy="150" r="5" fill="var(--color-carmine)" />
-    <circle cx="360" cy="470" r="5" fill="var(--color-carmine)" />
+    <circle cx="400" cy="540" r="5" fill="var(--color-carmine)" />
   </svg>
 
   <div class="relative flex flex-col gap-3 lg:block">
-    <div class="lg:absolute lg:left-0 lg:top-4 lg:w-[270px]" data-parallax="0.05">
+    <div class="lg:absolute lg:left-0 lg:top-0 lg:w-[270px]" data-parallax="0.04">
       <div class:list={[card, "lg:-rotate-2"]} data-reveal style="--d: 1">
         <p class="text-[0.7rem] font-bold text-muted-ink">{c.sponsored}</p>
         <p class="mt-1 font-bold text-ad-link">{c.adTitle}</p>
@@ -64,7 +64,7 @@ const card = "rounded-2xl border border-line bg-card/95 p-4 shadow-[0_18px_50px_
       </div>
     </div>
 
-    <div class="lg:absolute lg:right-0 lg:top-[92px] lg:w-[300px]" data-parallax="-0.04">
+    <div class="lg:absolute lg:right-0 lg:top-[80px] lg:w-[300px]" data-parallax="-0.03">
       <div class:list={[card, "bg-chat/95"]} data-reveal style="--d: 3">
         <p class="mb-2.5 text-[0.7rem] font-bold text-muted-ink">{c.chatWith}</p>
         <div class="space-y-2 text-[0.85rem] leading-snug">
@@ -75,7 +75,7 @@ const card = "rounded-2xl border border-line bg-card/95 p-4 shadow-[0_18px_50px_
       </div>
     </div>
 
-    <div class="lg:absolute lg:left-6 lg:top-[300px] lg:w-[280px]" data-parallax="0.09">
+    <div class="lg:absolute lg:left-2 lg:top-[330px] lg:w-[280px]" data-parallax="0.05">
       <div class:list={[card, "lg:rotate-1"]} data-reveal style="--d: 5">
         <div class="flex items-center justify-between gap-2">
           <p class="text-[0.7rem] font-bold text-muted-ink">✦ {c.proposed}</p>
@@ -89,7 +89,7 @@ const card = "rounded-2xl border border-line bg-card/95 p-4 shadow-[0_18px_50px_
       </div>
     </div>
 
-    <div class="lg:absolute lg:right-2 lg:top-[400px] lg:w-[290px]" data-parallax="-0.07">
+    <div class="lg:absolute lg:right-0 lg:top-[490px] lg:w-[290px]" data-parallax="-0.04">
       <div class={card} data-reveal style="--d: 7">
         <p class="eyebrow !text-[0.66rem]">{c.costLabel}</p>
         <p class="mt-1 font-display text-5xl font-bold leading-none"><span data-count="191.64" data-decimals="2" data-prefix="R$ ">R$ 191,64</span></p>

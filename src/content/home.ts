@@ -2,15 +2,16 @@ import type { Locale } from "../i18n"
 
 export const home = {
   "pt-BR": {
-    title: "Ybyatã · Crescimento para clínicas de saúde",
+    title: "Ybyatã · Mais pacientes, menos achismo",
     description:
       "Anúncios no Google e na Meta, uma plataforma que acompanha cada paciente do clique ao atendimento e uma gestão comercial que treina e acompanha a equipe. Crescimento de verdade para clínicas.",
     hero: {
       eyebrow: "Crescimento para clínicas de saúde",
-      title: "Mais pacientes na cadeira.",
-      titleEm: "E a certeza de onde eles vieram.",
+      title: "Mais pacientes.",
+      titleEm: "Menos achismo.",
+      sub: "Inteligência artificial que acompanha cada paciente, do anúncio à agenda.",
       lead:
-        "A Ybyatã cuida do crescimento da sua clínica de ponta a ponta: os anúncios, uma plataforma que acompanha cada paciente do clique ao atendimento, e uma gestão comercial que ensina a sua equipe a vender.",
+        "Anúncios no Google e na Meta, uma plataforma que lê as conversas do WhatsApp e mostra o que cada anúncio trouxe, e uma gestão comercial que ensina a sua equipe a vender.",
       secondary: "Conhecer a plataforma",
     },
     leaks: {
@@ -59,7 +60,7 @@ export const home = {
     },
     steps: {
       eyebrow: "Como funciona",
-      title: "Do clique à cadeira da clínica.",
+      title: "Do clique à agenda.",
       items: [
         {
           n: "01",
@@ -140,15 +141,16 @@ export const home = {
     },
   },
   en: {
-    title: "Ybyatã · Growth for health clinics",
+    title: "Ybyatã · More patients, less guesswork",
     description:
       "Google and Meta ads, a platform that follows every patient from the click to the visit, and commercial management that trains and manages the team. Real growth for clinics.",
     hero: {
       eyebrow: "Growth for health clinics",
-      title: "More patients in the chair.",
-      titleEm: "And knowing where they came from.",
+      title: "More patients.",
+      titleEm: "Less guesswork.",
+      sub: "AI that follows every patient, from the ad to the schedule.",
       lead:
-        "Ybyatã takes care of your clinic's growth end to end: the ads, a platform that follows every patient from the click to the visit, and commercial management that teaches your team to sell.",
+        "Google and Meta ads, a platform that reads the WhatsApp conversations and shows what each ad brought, and commercial management that teaches your team to sell.",
       secondary: "See the platform",
     },
     leaks: {
@@ -197,7 +199,7 @@ export const home = {
     },
     steps: {
       eyebrow: "How it works",
-      title: "From the click to the clinic chair.",
+      title: "From the click to the schedule.",
       items: [
         {
           n: "01",
