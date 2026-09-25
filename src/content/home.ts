@@ -39,7 +39,7 @@ export const home = {
         name: "A plataforma",
         title: "Do clique ao atendimento, medido.",
         points: [
-          "O WhatsApp da recepção organizado: quem espera resposta, e há quanto tempo",
+          "O WhatsApp da clínica num lugar só: responda por texto ou áudio, e veja quem espera resposta",
           "Agendamentos propostos a partir da própria conversa",
           "Conversões de volta para o Google e a Meta",
           "O custo de cada agendamento, por campanha",
@@ -71,7 +71,7 @@ export const home = {
         {
           n: "02",
           title: "A conversa acontece no WhatsApp",
-          body: "A recepção atende pelo WhatsApp Business. A Ybyatã acompanha as conversas e mostra quem está esperando resposta, e há quanto tempo.",
+          body: "A recepção responde pela própria Ybyatã, por texto ou áudio, ou pelo WhatsApp Business. A Ybyatã acompanha cada conversa, inclusive os áudios, e mostra quem está esperando resposta, e há quanto tempo.",
           media: { clip: "inbox", w: 1168, h: 900, alt: "A caixa de entrada: quem está esperando resposta e há quanto tempo." },
         },
         {
@@ -178,7 +178,7 @@ export const home = {
         name: "The platform",
         title: "From the click to the visit, measured.",
         points: [
-          "The front desk's WhatsApp organized: who's waiting for an answer, and for how long",
+          "The clinic's WhatsApp in one place: reply by text or voice note, and see who's waiting",
           "Bookings proposed from the conversation itself",
           "Conversions sent back to Google and Meta",
           "The cost of each booking, by campaign",
@@ -210,7 +210,7 @@ export const home = {
         {
           n: "02",
           title: "The conversation happens on WhatsApp",
-          body: "The front desk answers on WhatsApp Business. Ybyatã follows the conversations and shows who's waiting for an answer, and for how long.",
+          body: "The front desk replies from Ybyatã itself, by text or voice note, or from WhatsApp Business. Ybyatã follows every conversation, voice notes included, and shows who's waiting for an answer, and for how long.",
           media: { clip: "inbox", w: 1168, h: 900, alt: "The inbox: who's waiting for an answer and for how long." },
         },
         {

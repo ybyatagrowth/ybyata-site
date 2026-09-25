@@ -18,7 +18,7 @@ export const platform = {
       {
         eyebrow: "Conversas", ai: true,
         title: "Ninguém fica sem resposta.",
-        body: "Todas as conversas do WhatsApp da clínica num lugar só, com quem está esperando e há quanto tempo. A IA transcreve os áudios e rascunha respostas com a agenda e os preços da clínica; a recepção revisa e envia.",
+        body: "Todas as conversas do WhatsApp da clínica num lugar só, com quem está esperando e há quanto tempo. Responda dali mesmo, por texto ou áudio. A IA transcreve os áudios dos pacientes, analisa junto com o resto da conversa e rascunha respostas com a agenda e os preços da clínica; a recepção revisa e envia.",
         media: { image: "/media/reply-draft.png", w: 1168, h: 900, alt: "Uma conversa aberta com uma resposta escrita pela IA, para a recepção ler antes de enviar." } as Media,
       },
       {
@@ -107,7 +107,7 @@ export const platform = {
       {
         eyebrow: "Conversations", ai: true,
         title: "Nobody goes unanswered.",
-        body: "All the clinic's WhatsApp conversations in one place, with who's waiting and for how long. The AI transcribes voice notes and drafts replies with the clinic's schedule and prices; the front desk reviews and sends.",
+        body: "All the clinic's WhatsApp conversations in one place, with who's waiting and for how long. Reply right there, by text or voice note. The AI transcribes patients' voice notes, analyzes them with the rest of the conversation, and drafts replies with the clinic's schedule and prices; the front desk reviews and sends.",
         media: { image: "/media/reply-draft.png", w: 1168, h: 900, alt: "An open conversation with a reply drafted by the AI, for the front desk to read before sending." } as Media,
       },
       {
