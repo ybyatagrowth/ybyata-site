@@ -86,7 +86,11 @@ if (!reduced) {
   const frame = () => {
     queued = false
     const vh = window.innerHeight
+    // Parallax only where things sit side by side; stacked on a tablet or phone, it slides one
+    // card over another.
+    const wide = window.innerWidth >= 1024
     for (const el of layers) {
+      if (!wide) { el.style.translate = ""; continue }
       const box = (el.parentElement ?? el).getBoundingClientRect()
       if (box.bottom < -vh || box.top > vh * 2) continue
       const offset = (box.top + box.height / 2 - vh / 2) * Number(el.dataset.parallax)
