@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@import "@fontsource/cormorant/600.css";
+@import "@fontsource/cormorant/700.css";
+@import "@fontsource/cormorant/600-italic.css";
+@import "@fontsource/alegreya-sans/400.css";
+@import "@fontsource/alegreya-sans/500.css";
+@import "@fontsource/alegreya-sans/700.css";
+@import "@fontsource/fragment-mono/400.css";
+
+/* The platform's palette (ybyata_platform web/src/index.css), so the site and the product match. */
+@theme {
+  --font-sans: "Alegreya Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant", Georgia, ui-serif, serif;
+  --font-mono: "Fragment Mono", ui-monospace, monospace;
+
+  --color-paper: #f5f2e7;
+  --color-card: #fcfaf3;
+  --color-ink: #262019;
+  --color-muted: #eae4d2;
+  --color-muted-ink: #6b614f;
+  --color-line: #d9d0b8;
+  --color-carmine: #a11e30;
+  --color-carmine-soft: #f3dfe0;
+  --color-carmine-deep: #8a1827;
+  /* The hero's small pieces: a search ad's link blue and WhatsApp's bubbles, in our warmth. */
+  --color-ad-link: #1a4fb4;
+  --color-chat: #efe9d8;
+  --color-chat-out: #dfe6cf;
+  --color-moss: #5f6e44;
+  --color-gold: #96741f;
+  --color-night: #1d1912;
+  --color-night-ink: #ede7d6;
+  --color-night-muted: #a89e8c;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-paper text-ink font-sans antialiased; font-size: 17px; line-height: 1.65; }
+  ::selection { background: var(--color-carmine-soft); }
+  :focus-visible { outline: 2px solid var(--color-carmine); outline-offset: 3px; border-radius: 4px; }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[0.95rem] font-bold transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-carmine text-card hover:bg-carmine-deep;
+}
+@utility btn-ghost {
+  @apply btn border border-line text-ink hover:border-ink/40 hover:bg-card;
+}
+@utility btn-light {
+  @apply btn bg-night-ink text-night hover:bg-white;
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .display { @apply font-display font-bold tracking-tight; line-height: 1.04; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.16em] text-muted-ink; }
+  .prose-doc h2 { @apply font-display text-2xl font-bold mt-10 mb-3; }
+  .prose-doc h3 { @apply font-display text-xl font-bold mt-6 mb-2; }
+  .prose-doc p, .prose-doc li { @apply mb-3 text-ink/85; }
+  .prose-doc ul { @apply list-disc pl-6; }
+  .prose-doc a { @apply text-carmine underline underline-offset-2; }
+  .prose-doc pre { @apply mb-4 overflow-x-auto rounded-xl border border-line bg-card p-4 font-mono text-[0.8rem] leading-relaxed; }
+  .prose-doc table { @apply mb-4 w-full border-collapse text-[0.95rem]; }
+  .prose-doc th, .prose-doc td { @apply border-b border-line px-2.5 py-2 text-left align-top; }
+  .prose-doc figure { @apply my-6; }
+  .prose-doc figure img { @apply block h-auto w-full rounded-xl border border-line shadow-[0_6px_24px_rgba(38,32,25,.08)]; }
+  .prose-doc figcaption { @apply mt-2 text-sm text-muted-ink; }
+  .prose-doc .status { @apply mb-6 rounded-xl border border-line bg-card px-5 py-4 text-[0.95rem]; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Paper: a faint grain over everything, so the page reads as printed rather than rendered. */
+.grain::before {
+  content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.05; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Reveal: hidden only once the script is known to run, so nothing stays invisible without it. */
+.js [data-reveal] { opacity: 0; translate: 0 22px; transition: opacity .8s cubic-bezier(.2,.7,.2,1), translate .8s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--d, 0) * 90ms); }
+.js [data-reveal].is-in { opacity: 1; translate: 0 0; }
+.js [data-draw] path, .js [data-draw] line, .js [data-draw] polyline { stroke-dasharray: var(--len, 1200); stroke-dashoffset: var(--len, 1200); transition: stroke-dashoffset 2.4s cubic-bezier(.6,.1,.2,1); transition-delay: calc(var(--d, 0) * 120ms); }
+.js [data-draw].is-in path, .js [data-draw].is-in line, .js [data-draw].is-in polyline { stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; translate: none; transition: none; }
+  .js [data-draw] path, .js [data-draw] line, .js [data-draw] polyline { stroke-dashoffset: 0; transition: none; }
+}

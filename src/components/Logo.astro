@@ -1,0 +1,14 @@
+---
+import horizontal from "../assets/logo-horizontal.svg?raw"
+import emblem from "../assets/emblem.svg?raw"
+
+interface Props { variant?: "horizontal" | "emblem"; class?: string }
+const { variant = "horizontal", class: className = "" } = Astro.props
+// The brand files color themselves carmine; here the color comes from the surrounding text.
+const svg = (variant === "horizontal" ? horizontal : emblem)
+  .replace(/\scolor="[^"]*"/, "")
+  .replace(/<title>.*?<\/title>/, "")
+  .replace("<svg ", `<svg class="${className}" aria-hidden="true" focusable="false" `)
+---
+
+<Fragment set:html={svg} />
