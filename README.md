@@ -1,7 +1,8 @@
 # ybyata.com
 
 The Ybyatã website: [Astro](https://docs.astro.build), Tailwind, static. Portuguese at the root,
-English under `/en/`. Hosted on Cloudflare Pages (build `pnpm build`, output `dist/`).
+English under `/en/`. Hosted on Cloudflare Pages, project `ybyata-site`: every push to main
+deploys ybyata.com, and every branch gets a preview at `<branch>.ybyata-site.pages.dev`.
 
 ```sh
 pnpm i
